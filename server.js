@@ -1,9 +1,15 @@
 var express = require('express')
 var app = express()
-var PORT = (process.env.port || 3000);
+var port = process.env.PORT || 3000;
+
+// Settings
+app.set("view engine", "ejs");
+
+// make express look in the public directory for assets (css/js/img)
+app.use(express.static(__dirname + '/app'));
 
 app.get('/', function (req, res) {
-  res.send('Bla')
+  res.render("index")
 })
 
-app.listen(PORT);
+app.listen(port);
