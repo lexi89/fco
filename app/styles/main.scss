@@ -1,23 +1,43 @@
 @import "utils";
+@import "vars";
+
+*{
+  box-sizing: border-box;
+}
 body{
+  margin: 0;
+}
+body,p,ul,li,ol,blockquote{
   font-family: 'Neuton', serif;
-  font-size: 18px;
-  width: 100%;
-  height: 100%;
+  font-size: 20px;
 }
 
 h1, h2, h3, h4, h5, h6{
   font-family: 'Montserrat', sans-serif;
 }
-
 h1{
   font-size: 1.75em;
 }
 
+.fixed-width{
+  max-width: 960px;
+  margin: 0 auto;
+}
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+//////////////////////////////
+// Hero
+//////////////////////////////
 #hero{
   height: 100vh;
+  position:relative;
+  z-index:0;
+  overflow: hidden;
   & video{
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -29,12 +49,115 @@ h1{
     position: relative;
     z-index: 10;
     opacity: 0;
+    font-size: 56px;
+    margin-top: 0px;
+  }
+  & .headline-layer{
+    margin-left: 10%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  & .down-arrow{
+    display:inline-block;
+    border: 2px solid $black;
+    height: 30px;
+    width: 30px;
+    border-top: none;
+    border-right: none;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: rotate(-45deg);
+
   }
 }
 
 #line-1.fadeIn, #line-2.fadeIn{
   animation: fadeIn 3s linear;
   animation-fill-mode: forwards;
+}
+
+//////////////////////////////
+// Intro
+//////////////////////////////
+
+#intro-text{
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & p{
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+//////////////////////////////
+// Product sections
+//////////////////////////////
+.product-sections{
+  display: flex;
+  justify-content: center;
+  max-height: 500px;
+  & img{
+  }
+  & .product-text{
+    padding: 1.5em;
+    width: 50%;
+  }
+}
+
+.product-image-wrapper{
+  position: relative;
+  width:50%;
+  & .product-image-cta{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    & a{
+      color: white;
+      border: 2px solid white;
+      text-decoration: none;
+      padding: 1em 1.5em;
+      transition: $hover;
+      &:hover{
+        transition: $hover;
+        background-color: white;
+        color: $black;
+      }
+    }
+    &:hover{
+      transition: all 0.4s ease-in-out;
+      opacity: 1;
+      background-color: rgba($black, 0.5)
+    }
+  }
+}
+
+.product-cta-buttons{
+  border: 2px solid $black;
+  padding: 1em 1.5em;
+  margin: 1em 0em;
+  text-decoration: none;
+  color: $black;
+  display: inline-block;
+  transition: $hover;
+  &:hover{
+    transition: $hover;
+    background-color:$black;
+    color: white;
+  }
 }
 
 @keyframes fadeIn{
